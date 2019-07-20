@@ -10,13 +10,18 @@ import { ProductAlertsComponent } from './product-alerts/product-alerts.componen
 
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartService } from './cart.service';
+import { CartComponent } from './cart/cart.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: ProductListComponent },{ path: 'products/:productId', component: ProductDetailsComponent }
+      { path: '*', redirectTo: '/', pathMatch: 'full' },
+      { path: '', component: ProductListComponent },{ path: 'products/:productId', component: ProductDetailsComponent },
+      { path: 'products/:cart', component: CartComponent },
+        {path: '/*path', component: NotFoundComponent}
     ])
   ],
   declarations: [
@@ -24,7 +29,9 @@ import { CartService } from './cart.service';
     TopBarComponent,
     ProductListComponent,
     ProductAlertsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartComponent,
+    NotFoundComponent
   ],
   bootstrap: [ AppComponent ],
   providers: [ CartService]
