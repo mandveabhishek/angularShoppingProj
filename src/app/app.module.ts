@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -12,16 +13,17 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { CartService } from './cart.service';
 import { CartComponent } from './cart/cart.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ShippingComponent } from './shipping/shipping.component';
+
 
 @NgModule({
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '*', redirectTo: '/', pathMatch: 'full' },
-      { path: '', component: ProductListComponent },{ path: 'products/:productId', component: ProductDetailsComponent },
-      { path: 'products/:cart', component: CartComponent },
-        {path: '/*path', component: NotFoundComponent}
+      // { path: '/', redirectTo: [''] },
+      { path: '', component: ProductListComponent },{ path: 'products/:productId', component: ProductDetailsComponent },    { path: 'cart', component: CartComponent },
+        // {path: '/*path', component: NotFoundComponent}
     ])
   ],
   declarations: [
@@ -31,7 +33,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ProductAlertsComponent,
     ProductDetailsComponent,
     CartComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ShippingComponent
   ],
   bootstrap: [ AppComponent ],
   providers: [ CartService]
