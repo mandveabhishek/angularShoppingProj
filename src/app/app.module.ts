@@ -20,6 +20,7 @@ import { ShippingComponent } from './shipping/shipping.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       // { path: '/', redirectTo: [''] },
       { path: '', component: ProductListComponent },{ path: 'products/:productId', component: ProductDetailsComponent },    { path: 'cart', component: CartComponent },
